@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<title>Image Caption</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+</style>
+<body class="w3-light-grey">
+
+<!-- Navigation Bar -->
+<div class="w3-bar w3-white w3-large">
+  <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-red w3-mobile"><i class="fa fa-home"></i>Logo</a>
+  <a href="#captions" class="w3-bar-item w3-button w3-mobile">Captions</a>
+  <a href="#about" class="w3-bar-item w3-button w3-mobile">About</a>
+  <a href="#contact" class="w3-bar-item w3-button w3-mobile">Contact</a>
+  {% if user.is_authenticated %}
+  <a href="#" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">{{user.username}}</a>
+  <a href="users/logout" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">Logout</a>
+  {% else %}
+  <a href="users/register" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">Register</a>
+  <a href="users/login" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">Login</a>
+  {% endif %}
+</div>
+<!-- Header -->
+<header class="w3-display-container w3-content" style="max-width:1500px;">
+  <img class="w3-image" src="/static/images/c.jpg"style="min-width:1000px" width="1500" height="200">
+  <div class="w3-display-left w3-padding w3-col l6 m8">
+    <div class="w3-container w3-red">
+      <h2>Image Caption Generate</h2>
+    </div>
+    <div class="w3-container w3-white w3-padding-16">
+
+<!--FORM FOR IMAGE CAPTION GENERATOR-->
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="w3-row-padding" style="margin:0 -16px;">
+          {{form.as_p}}         
+        </div>        
+        <button class="w3-button w3-dark-grey" type="submit">Submit</button>
+      </form>
+      
+    </div>
+
+  </div>
+</header>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
+  <h5>Find Us On</h5>
+  <div class="w3-xlarge w3-padding-16">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">image-caption.com</a></p>
+</footer>
+
+
+</body>
+</html>
